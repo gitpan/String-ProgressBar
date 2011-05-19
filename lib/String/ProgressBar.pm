@@ -1,7 +1,7 @@
 package String::ProgressBar; ## Produces a simple progress bar
 
 
-our $VERSION='0.01';
+our $VERSION='0.02';
 
 
 use strict;
@@ -207,8 +207,9 @@ sub string { # $string
        $str.=" [$char]";
     }    
 
-    if ( $self->{'info'} ){
+    if ( $self->{'info'} || $self->{'info_used'} ){
        $str.=" ".sprintf("%-".length($self->{'info_last'})."s", $self->{'info'});
+       $self->{'info_used'} = 1;
     }    
 
     
